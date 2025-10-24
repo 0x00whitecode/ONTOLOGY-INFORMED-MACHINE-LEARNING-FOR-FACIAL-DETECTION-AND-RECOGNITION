@@ -1,0 +1,352 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/facial-recognition#"
+     xml:base="http://www.semanticweb.org/ontologies/facial-recognition"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:facial="http://www.semanticweb.org/ontologies/facial-recognition#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/facial-recognition">
+        <rdfs:label>Facial Recognition Ontology</rdfs:label>
+        <rdfs:comment>An ontology for facial recognition systems, including faces, features, algorithms, and recognition processes.</rdfs:comment>
+        <owl:versionInfo>1.0</owl:versionInfo>
+    </owl:Ontology>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#comment"/>
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#versionInfo"/>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- hasFeature -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#hasFeature">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Face"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#FacialFeature"/>
+        <rdfs:label>has feature</rdfs:label>
+        <rdfs:comment>Relates a face to its facial features</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- belongsToPerson -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#belongsToPerson">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Face"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Person"/>
+        <rdfs:label>belongs to person</rdfs:label>
+        <rdfs:comment>Relates a face to the person it belongs to</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- usesAlgorithm -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#usesAlgorithm">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#RecognitionSystem"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Algorithm"/>
+        <rdfs:label>uses algorithm</rdfs:label>
+        <rdfs:comment>Relates a recognition system to the algorithm it uses</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- processesImage -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#processesImage">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#RecognitionSystem"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Image"/>
+        <rdfs:label>processes image</rdfs:label>
+        <rdfs:comment>Relates a recognition system to the images it processes</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- containsFace -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#containsFace">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Image"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Face"/>
+        <rdfs:label>contains face</rdfs:label>
+        <rdfs:comment>Relates an image to the faces it contains</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- produces -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#produces">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#RecognitionProcess"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#RecognitionResult"/>
+        <rdfs:label>produces</rdfs:label>
+        <rdfs:comment>Relates a recognition process to its result</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- hasLandmark -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#hasLandmark">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Face"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#FacialLandmark"/>
+        <rdfs:label>has landmark</rdfs:label>
+        <rdfs:comment>Relates a face to its facial landmarks</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- confidenceScore -->
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#confidenceScore">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#RecognitionResult"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:label>confidence score</rdfs:label>
+        <rdfs:comment>The confidence score of a recognition result (0.0 to 1.0)</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- age -->
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#age">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label>age</rdfs:label>
+        <rdfs:comment>The age of a person</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- gender -->
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#gender">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>gender</rdfs:label>
+        <rdfs:comment>The gender of a person</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- personName -->
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#personName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>person name</rdfs:label>
+        <rdfs:comment>The name of a person</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- imageFormat -->
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#imageFormat">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Image"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>image format</rdfs:label>
+        <rdfs:comment>The format of an image (e.g., JPEG, PNG)</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- imageWidth -->
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#imageWidth">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Image"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label>image width</rdfs:label>
+        <rdfs:comment>The width of an image in pixels</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- imageHeight -->
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#imageHeight">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Image"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <rdfs:label>image height</rdfs:label>
+        <rdfs:comment>The height of an image in pixels</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- algorithmName -->
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#algorithmName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Algorithm"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label>algorithm name</rdfs:label>
+        <rdfs:comment>The name of an algorithm</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- accuracy -->
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#accuracy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Algorithm"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:label>accuracy</rdfs:label>
+        <rdfs:comment>The accuracy of an algorithm (0.0 to 1.0)</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- xCoordinate -->
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#xCoordinate">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#FacialLandmark"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:label>x coordinate</rdfs:label>
+        <rdfs:comment>The x coordinate of a facial landmark</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- yCoordinate -->
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#yCoordinate">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#FacialLandmark"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:label>y coordinate</rdfs:label>
+        <rdfs:comment>The y coordinate of a facial landmark</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Person -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#Person">
+        <rdfs:label>Person</rdfs:label>
+        <rdfs:comment>A human individual</rdfs:comment>
+    </owl:Class>
+
+    <!-- Face -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#Face">
+        <rdfs:label>Face</rdfs:label>
+        <rdfs:comment>A human face detected in an image</rdfs:comment>
+    </owl:Class>
+
+    <!-- FacialFeature -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#FacialFeature">
+        <rdfs:label>Facial Feature</rdfs:label>
+        <rdfs:comment>A distinctive feature of a face</rdfs:comment>
+    </owl:Class>
+
+    <!-- Eye -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#Eye">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#FacialFeature"/>
+        <rdfs:label>Eye</rdfs:label>
+        <rdfs:comment>An eye as a facial feature</rdfs:comment>
+    </owl:Class>
+
+    <!-- Nose -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#Nose">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#FacialFeature"/>
+        <rdfs:label>Nose</rdfs:label>
+        <rdfs:comment>A nose as a facial feature</rdfs:comment>
+    </owl:Class>
+
+    <!-- Mouth -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#Mouth">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#FacialFeature"/>
+        <rdfs:label>Mouth</rdfs:label>
+        <rdfs:comment>A mouth as a facial feature</rdfs:comment>
+    </owl:Class>
+
+    <!-- Eyebrow -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#Eyebrow">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#FacialFeature"/>
+        <rdfs:label>Eyebrow</rdfs:label>
+        <rdfs:comment>An eyebrow as a facial feature</rdfs:comment>
+    </owl:Class>
+
+    <!-- Ear -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#Ear">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#FacialFeature"/>
+        <rdfs:label>Ear</rdfs:label>
+        <rdfs:comment>An ear as a facial feature</rdfs:comment>
+    </owl:Class>
+
+    <!-- FacialLandmark -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#FacialLandmark">
+        <rdfs:label>Facial Landmark</rdfs:label>
+        <rdfs:comment>A specific point on a face used for recognition</rdfs:comment>
+    </owl:Class>
+
+    <!-- Image -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#Image">
+        <rdfs:label>Image</rdfs:label>
+        <rdfs:comment>A digital image that may contain faces</rdfs:comment>
+    </owl:Class>
+
+    <!-- Algorithm -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#Algorithm">
+        <rdfs:label>Algorithm</rdfs:label>
+        <rdfs:comment>An algorithm used for facial recognition</rdfs:comment>
+    </owl:Class>
+
+    <!-- NeuralNetwork -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#NeuralNetwork">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Algorithm"/>
+        <rdfs:label>Neural Network</rdfs:label>
+        <rdfs:comment>A neural network algorithm for facial recognition</rdfs:comment>
+    </owl:Class>
+
+    <!-- CNN -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#CNN">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#NeuralNetwork"/>
+        <rdfs:label>Convolutional Neural Network</rdfs:label>
+        <rdfs:comment>A convolutional neural network for image processing</rdfs:comment>
+    </owl:Class>
+
+    <!-- SVM -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#SVM">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Algorithm"/>
+        <rdfs:label>Support Vector Machine</rdfs:label>
+        <rdfs:comment>A support vector machine algorithm</rdfs:comment>
+    </owl:Class>
+
+    <!-- PCA -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#PCA">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Algorithm"/>
+        <rdfs:label>Principal Component Analysis</rdfs:label>
+        <rdfs:comment>Principal Component Analysis algorithm</rdfs:comment>
+    </owl:Class>
+
+    <!-- LDA -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#LDA">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#Algorithm"/>
+        <rdfs:label>Linear Discriminant Analysis</rdfs:label>
+        <rdfs:comment>Linear Discriminant Analysis algorithm</rdfs:comment>
+    </owl:Class>
+
+    <!-- RecognitionSystem -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#RecognitionSystem">
+        <rdfs:label>Recognition System</rdfs:label>
+        <rdfs:comment>A complete facial recognition system</rdfs:comment>
+    </owl:Class>
+
+    <!-- RecognitionProcess -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#RecognitionProcess">
+        <rdfs:label>Recognition Process</rdfs:label>
+        <rdfs:comment>The process of recognizing faces in images</rdfs:comment>
+    </owl:Class>
+
+    <!-- RecognitionResult -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#RecognitionResult">
+        <rdfs:label>Recognition Result</rdfs:label>
+        <rdfs:comment>The result of a facial recognition process</rdfs:comment>
+    </owl:Class>
+
+    <!-- Match -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#Match">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#RecognitionResult"/>
+        <rdfs:label>Match</rdfs:label>
+        <rdfs:comment>A successful match in facial recognition</rdfs:comment>
+    </owl:Class>
+
+    <!-- NoMatch -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#NoMatch">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/facial-recognition#RecognitionResult"/>
+        <rdfs:label>No Match</rdfs:label>
+        <rdfs:comment>No match found in facial recognition</rdfs:comment>
+    </owl:Class>
+
+    <!-- Database -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#Database">
+        <rdfs:label>Database</rdfs:label>
+        <rdfs:comment>A database containing facial data for recognition</rdfs:comment>
+    </owl:Class>
+
+    <!-- FaceTemplate -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#FaceTemplate">
+        <rdfs:label>Face Template</rdfs:label>
+        <rdfs:comment>A mathematical representation of a face for comparison</rdfs:comment>
+    </owl:Class>
+
+    <!-- BiometricData -->
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/facial-recognition#BiometricData">
+        <rdfs:label>Biometric Data</rdfs:label>
+        <rdfs:comment>Biometric data extracted from facial features</rdfs:comment>
+    </owl:Class>
+
+</rdf:RDF>

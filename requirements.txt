@@ -1,0 +1,6 @@
+Flask==2.0.3
+opencv-python==4.5.5.64
+numpy==1.21.6
+mtcnn==0.1.0
+Pillow==8.4.0
+mtcnn==0.1.0
